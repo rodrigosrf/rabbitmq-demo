@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  rabbitmq:
+    image: "rabbitmq:3-management"
+    container_name: rabbitmq-container
+    ports:
+      - "5672:5672" # Porta padrão para conexões AMQP
+      - "15672:15672" # Porta da interface de gerenciamento web
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "cookie_secreto" # Substitua pelo seu segredo Erlang
+      RABBITMQ_DEFAULT_USER: "admin" # Substitua pelo seu nome de usuário
+      RABBITMQ_DEFAULT_PASS: "123456" # Substitua pela sua senha
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+
+volumes:
+  rabbitmq-data:
